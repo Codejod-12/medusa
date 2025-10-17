@@ -1,0 +1,1218 @@
+/* ==================== 1. Root, Reset & Typography ==================== */
+:root {
+    --color-primary: #fcf8f3; /* Light background for body/cards */
+    --color-text-light: #fff;
+    --color-text-dark: #222;
+    --color-highlight: #fffa65; /* Yellow highlight for text */
+    --color-accent-red: #f46a3d; /* Red/Orange accent color */
+    --color-overlay-bg: rgba(255, 255, 255, 0.1);
+    --color-sign-in-bg: #111;
+    --color-gray-dark: #333;
+    --color-gray-medium: #555;
+    --color-border: #f0f0f0;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-fast: 0.3s ease;
+    --transition-slow: 0.6s ease;
+    --transition-speed:10s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-serif {
+    font-family: var(--font-heading);
+}
+
+.section-title {
+    color: var(--color-text-dark);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-family: var(--font-heading);
+    padding-left: 10px;
+}
+
+/* ==================== Navbar ==================== */
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 40px;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+z-index: 10;
+color: var(--color-text-light);
+transition: background-color var(--transition-slow);
+}
+
+.navbar:hover {
+background-color: rgba(0, 0, 0, 0.4);
+backdrop-filter: blur(10px);
+}
+
+.logo {
+font-family: var(--font-heading);
+font-size: 1.6em;
+font-weight: 700;
+letter-spacing: 0.5px;
+transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+transform: scale(1.05);
+}
+
+.navbar nav ul {
+list-style: none;
+display: flex;
+gap: 30px;
+}
+
+.navbar nav ul li a {
+color: var(--color-text-light);
+text-decoration: none;
+font-size: 1em;
+opacity: 0.8;
+transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.navbar nav ul li a:hover {
+opacity: 1;
+transform: translateY(-2px);
+}
+
+.nav-actions {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+
+/* ===================== HAMBURGER ===================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--color-gray-dark);
+    border-radius: 2px;
+    transition: all var(--transition-speed) ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+.language {
+font-size: 1em;
+opacity: 0.8;
+transition: opacity var(--transition-fast);
+}
+
+.language:hover {
+opacity: 1;
+}
+
+.sign-in-btn {
+background-color: var(--color-sign-in-bg);
+color: var(--color-text-light);
+border: none;
+padding: 8px 20px;
+border-radius: 20px;
+cursor: pointer;
+font-size: 1em;
+font-weight: 500;
+transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.sign-in-btn:hover {
+background-color: #000;
+transform: scale(1.05);
+}
+
+/* ==================== Hero Section ==================== */
+.hero-section {
+width: 100%;
+height: 100vh;
+position: relative;
+overflow: hidden;
+}
+
+.hero-image-container {
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.hero-image-container img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+transition: transform 5s ease, filter 2s ease;
+}
+
+.hero-image-container:hover img {
+transform: scale(1.05);
+filter: brightness(1.05);
+}
+
+/* ==================== Overlay & Content ==================== */
+.hero-overlay {
+background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.1));
+position: absolute;
+inset: 0;
+padding: 100px 60px 40px 60px;
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+}
+
+.hero-content {
+flex: 1;
+max-width: 60%;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding-bottom: 40px;
+transition: transform var(--transition-slow);
+}
+
+.hero-content:hover {
+transform: translateY(-10px);
+}
+
+.hero-content h1 {
+font-family: var(--font-heading);
+font-size: 4em;
+font-weight: 400;
+line-height: 1.1;
+margin-bottom: 30px;
+transition: color var(--transition-fast);
+}
+
+.hero-content h1:hover {
+color: #fffc9b;
+}
+
+.highlight {
+background-color: var(--color-highlight);
+color: var(--color-text-dark);
+padding: 0 6px;
+border-radius: 4px;
+}
+
+/* ==================== CTA Buttons ==================== */
+.cta-buttons {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+}
+
+.cta-call, .cta-shop {
+padding: 12px 25px;
+border-radius: 30px;
+font-size: 1em;
+font-weight: 600;
+cursor: pointer;
+transition: all var(--transition-fast);
+}
+
+.cta-call {
+background-color: transparent;
+color: var(--color-text-light);
+border: 1px solid var(--color-text-light);
+}
+
+
+
+.cta-shop {
+background-color: var(--color-text-light);
+color: var(--color-text-dark);
+border: 1px solid var(--color-text-light);
+}
+
+.cta-call:hover {
+background-color: rgba(255, 255, 255, 0.15);
+transform: scale(1.05);
+}
+
+.cta-shop:hover {
+background-color: #eee;
+transform: scale(1.05);
+}
+
+/* ==================== Sidebar Widgets ==================== */
+
+.sidebar-widgets {
+width: 300px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+gap: 20px;
+animation: fadeInUp 1.2s ease;
+}
+
+
+
+/* Glassmorphism Style */
+
+.stat-card, .video-card {
+background: var(--color-overlay-bg);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+border-radius: 15px;
+padding: 20px;
+color: var(--color-text-light);
+transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.stat-card:hover, .video-card:hover {
+transform: translateY(-5px);
+background: rgba(255, 255, 255, 0.15);
+}
+
+/* Stat Card */
+.stat-number {
+font-family: var(--font-heading);
+font-size: 3em;
+font-weight: 500;
+margin-bottom: 8px;
+
+}
+
+.stat-card p {
+font-size: 0.9em;
+opacity: 0.85;
+}
+
+/* Tags */
+.tags-container {
+display: flex;
+justify-content: flex-end;
+gap: 10px;
+}
+
+.tag {
+background-color: rgba(0, 0, 0, 0.3);
+color: var(--color-text-light);
+text-decoration: none;
+padding: 8px 15px;
+border-radius: 20px;
+font-size: 0.9em;
+border: 1px solid rgba(255, 255, 255, 0.2);
+transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tag:hover {
+background-color: rgba(0, 0, 0, 0.6);
+transform: translateY(-2px);
+}
+
+/* ==================== Video Card ==================== */
+.video-card {
+position: relative;
+height: 180px;
+overflow: hidden;
+}
+
+.video-thumbnail {
+width: 100%;
+height: 100px;
+object-fit: cover;
+border-radius: 10px;
+display: block;
+transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.video-card:hover .video-thumbnail {
+transform: scale(1.05);
+filter: brightness(1.1);
+}
+
+.play-icon {
+position: absolute;
+top: 10px;
+left: 10px;
+width: calc(100% - 20px);
+height: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 2em;
+color: var(--color-text-light);
+background-color: rgba(0, 0, 0, 0.4);
+border-radius: 10px;
+cursor: pointer;
+opacity: 0;
+transition: opacity var(--transition-fast);
+}
+
+.video-card:hover .play-icon {
+opacity: 1;
+}
+
+.video-card p {
+font-size: 0.85em;
+opacity: 0.8;
+position: absolute;
+bottom: 10px;
+left: 10px;
+width: calc(100% - 20px);
+margin: 0;
+}
+
+/* ==================== Animations ==================== */
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+
+to {
+ opacity: 1;
+ transform: translateY(0);
+}
+}
+
+/* ==================== 4. Product Grid Section ==================== */
+.product-grid-section {
+    padding: 40px 60px; 
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.product-grid {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;      
+    justify-content: space-between;
+}
+
+.product-card {
+    flex: 1 1 calc(25% - 15px); 
+    min-width: 200px;
+    background-color: var(--color-text-light);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.product-image-container {
+    height: 300px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.product-name {
+    font-size: 1rem;
+    color: var(--color-gray-dark);
+    flex-grow: 1; 
+    padding-right: 10px; 
+    font-weight: 500;
+}
+
+.product-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--color-gray-dark);
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.product-rating .stars {
+    color: #ffd700; /* Gold color for stars */
+    font-size: 1.2rem;
+    letter-spacing: 0px;
+    margin-right: 8px;
+}
+
+.product-rating .reviews {
+    font-size: 0.85rem;
+    color: var(--color-gray-medium);
+}
+
+
+/* ==================== 5. Feature Section ==================== */
+
+/* Base Styles for the Section */
+.beauty-section {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Base Card Styles */
+.card {
+    border-radius: 20px;
+    overflow: hidden; 
+    box-sizing: border-box;
+    display: flex;
+}
+
+/* === Left Card Styling === */
+.card-left {
+    flex: 1.5;
+    position: relative;
+    background-color: #f5e8df;
+    min-height: 600px;
+}
+
+/* Image on the Left Card */
+.card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.card-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
+    z-index: 2;
+}
+
+/* Content Wrapper for Left Card */
+.card-content-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 40px;
+    z-index: 3;
+    color: white;
+    max-width: 70%; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.title-left {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400; 
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.button {
+    text-decoration: none;
+    color: #333;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #eee;
+}
+
+/* === Right Card Styling === */
+.card-right {
+    flex: 1; /* Takes up less space */
+    flex-direction: column;
+    background-color: #fcf6f1;
+    padding: 40px;
+    justify-content: space-between;
+    min-height: 600px;
+}
+
+/* Content Wrapper for Right Card */
+.card-content-right {
+    padding-bottom: 30px;
+}
+
+.title-right {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.subtitle-right {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+/* Image Container for Right Card */
+.image-container-right {
+    width: 100%;
+}
+
+.image-right {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+/* ==================== 6. Three-Column Layout ==================== */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    max-width: 1400px;
+    height: 680px;
+    margin: 80px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--color-text-light);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.column {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Left Column */
+.left-column {
+    background: linear-gradient(to bottom, var(--color-text-light) 60%, var(--color-accent-red));
+}
+.left-column .section-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    margin-bottom: 40px;
+    line-height: 1.4;
+    padding-left: 0;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-dark);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.arrow {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-gray-medium);
+    transition: transform var(--transition-fast);
+}
+
+.nav-item:hover .arrow {
+    transform: translateX(5px);
+    color: var(--color-accent-red);
+}
+
+.reviews {
+    margin-top: auto;
+    color: var(--color-text-dark);
+    padding-bottom: 10px;
+}
+
+.rating {
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.label {
+    font-size: 0.95rem;
+    color: var(--color-gray-medium);
+    margin-bottom: 15px;
+}
+
+.review-avatars {
+    display: flex;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    margin-left: -12px;
+}
+.avatar:first-child { margin-left: 0; }
+
+
+/* Center Image */
+.center-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; 
+}
+
+/* Right Column */
+.right-column {
+    background: linear-gradient(to bottom, var(--color-text-light) 40%, var(--color-accent-red));
+}
+
+.right-column .section-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 30px;
+    line-height: 1.2;
+    padding-left: 0;
+}
+
+.offer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-dark);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+.offer-item:hover .arrow {
+    transform: translateX(5px);
+    color: var(--color-accent-red);
+}
+
+.offers {
+    margin-bottom: 40px;
+}
+
+.cta-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: auto; 
+}
+
+.cta-background {
+    background-image: url('/medusa image/cta-bg-placeholder.png'); /* Placeholder, replace with actual path */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cta-content {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    width: 80%;
+}
+
+.cta-text {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    font-family: var(--font-heading);
+}
+
+.shop-button {
+    display: inline-block;
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-fast);
+}
+
+.shop-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* ==================== 7. Marketing Section ==================== */
+.marketing-section {
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 60px;
+}
+
+.visual-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.image-box {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.visual-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.large-square {
+    width: 200px;
+    height: 200px;
+}
+
+.small-custom {
+    width: 100px;
+    height: 120px;
+    border-radius: 40% 60% 50% 50% / 60% 40% 60% 40%; 
+    margin-top: 50px;
+}
+
+.wide-eyes {
+    width: 380px;
+    height: 180px;
+}
+
+.section-title-container {
+    flex-grow: 1; 
+    text-align: center;
+    padding: 60px 20px 40px;
+    line-height: 1.2;
+    align-self: center;
+}
+
+.marketing-section .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.cta-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    background-color: var(--color-accent-red); 
+    border-radius: 10px;
+}
+
+.cta-bar .shop-button {
+    background-color: var(--color-text-light); 
+    color: var(--color-accent-red); 
+    font-size: 1.1rem;
+    padding: 15px 40px;
+    margin: 0 40px;
+    text-transform: uppercase;
+}
+
+.star-icon {
+    font-size: 2.5rem;
+    color: var(--color-text-light);
+    animation: rotateStar 10s linear infinite;
+}
+
+@keyframes rotateStar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* ==================== 8. Footer ==================== */
+.site-footer {
+    background-color: var(--color-text-dark);
+    color: #aaa;
+    padding: 60px 60px 20px;
+    font-family: var(--font-body);
+}
+
+.footer-content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #333;
+}
+
+.newsletter-column {
+    flex: 1.5;
+    margin-right: 40px;
+}
+
+.newsletter-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.email-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+.subscribe-button {
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color var(--transition-fast);
+}
+
+.footer-links-group {
+    display: flex;
+    gap: 40px;
+    flex: 2;
+}
+
+.links-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link-item {
+    color: #aaa;
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+}
+
+.link-item:hover {
+    color: var(--color-text-light);
+}
+
+.contact-email {
+    color: #aaa;
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end; 
+    flex: 1;
+    text-align: right;
+}
+
+.contact-email a {
+    color: var(--color-text-light);
+    margin-top: 5px;
+    transition: color var(--transition-fast);
+}
+
+.copyright-bar {
+    max-width: 1400px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+
+/* ==================== 9. Responsiveness (Media Queries) ==================== */
+
+/* Tablet and Smaller Desktop (Max Width: 1200px) */
+@media (max-width: 1200px) {
+    .navbar, .hero-overlay, .product-grid-section, .feature-section, .marketing-section, .site-footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    /* Adjust Hero Content Size */
+    .hero-content h1 {
+        font-size: 3.2em;
+    }
+    .hero-content {
+        max-width: 65%;
+    }
+
+    /* Product Grid */
+    .product-card {
+        flex: 1 1 calc(33.33% - 14px); /* Show 3 cards per row */
+    }
+
+    /* Feature Section */
+    .feature-section {
+        grid-template-columns: 1fr; /* Stack into a single column */
+    }
+    .feature-card--image {
+        min-height: 450px;
+    }
+
+    /* Three-Column Section */
+    .container {
+        height: auto;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+    }
+    .center-image-container {
+        display: none; /* Hide the central image */
+    }
+    .left-column, .right-column {
+        min-height: 600px;
+    }
+}
+
+/* Mobile Devices (Max Width: 768px) */
+@media (max-width: 768px) {
+   .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        z-index: 998;
+    }
+
+    .navbar nav.active {
+        display: flex;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+    /* Hero Section */
+    .hero-overlay {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 100px 20px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+        order: 2; /* Move content below widgets */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    .cta-call, .cta-shop {
+        width: 100%;
+    }
+
+    .sidebar-widgets {
+        width: 100%;
+        gap: 15px;
+        order: 1; /* Move widgets up */
+        margin-bottom: 30px;
+    }
+    .tags-container {
+        justify-content: center;
+    }
+
+    /* Product Grid */
+    .product-grid-section {
+        padding: 40px 20px;
+    }
+    .product-grid {
+        gap: 15px;
+    }
+    .product-card {
+        flex: 1 1 calc(50% - 7.5px); /* Show 2 cards per row */
+    }
+
+    /* Three-Column Section */
+    .container {
+        grid-template-columns: 1fr; /* Single column layout */
+        margin: 40px 20px;
+    }
+    .column {
+        padding: 30px;
+    }
+    .left-column {
+        background: var(--color-text-light); /* Remove gradient on mobile */
+        border-bottom: 1px solid var(--color-border);
+    }
+    .right-column {
+        background: var(--color-text-light);
+    }
+    .cta-box {
+        max-height: 200px;
+    }
+    .cta-text {
+        font-size: 1.5rem;
+    }
+
+    /* Marketing Section */
+    .marketing-section {
+        padding: 0 20px;
+    }
+    .visual-row {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .large-square, .wide-eyes, .small-custom {
+        width: 45%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 0;
+    }
+    .section-title-container {
+        order: -1; /* Move text to the top */
+        padding: 20px 0;
+        flex-basis: 100%;
+    }
+    .marketing-section .section-title {
+        white-space: normal;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding: 40px 20px 10px;
+    }
+    .footer-content-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .newsletter-column {
+        margin-right: 0;
+    }
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .footer-links-group {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+    }
+    .links-column {
+        flex: 1 1 30%;
+    }
+    .contact-email {
+        text-align: left;
+    }
+}
